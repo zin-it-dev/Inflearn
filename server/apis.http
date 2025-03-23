@@ -1,0 +1,40 @@
+### Categories
+GET http://localhost:5000/categories/
+
+### Courses
+GET http://localhost:5000/courses/
+
+### Course
+GET http://localhost:5000/courses/1
+
+### Lessons
+GET http://localhost:5000/courses/3/lessons
+
+### Lesson
+GET http://localhost:5000/courses/3/lessons/1
+
+### Token
+POST http://localhost:5000/auth/token/
+Content-Type: application/json
+
+{
+    "email": "tam2053.infl@gmail.com",
+    "password": "1"
+}
+
+### Current User
+GET http://localhost:5000/auth/current-user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzQyMDc1MTM5LCJqdGkiOiI1YzQ5MzM0ZS1kMzQyLTQ2ZjUtYjUyMC04MjY4MzMwZGUxY2IiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjo1LCJuYmYiOjE3NDIwNzUxMzksImNzcmYiOiIyOWU1M2NmMy02ZWM0LTQ1MTktOTVlMi05Y2Q0NmI5ZGM0MjMiLCJleHAiOjE3NDIwNzYwMzl9.Ou8S8vCNg8F8htcg7KyJ39A5demfaye9cmCPwqo5Zd8
+
+
+### User
+POST http://localhost:5000/users/
+Content-Type: application/json
+
+{
+    "username": "johndoe",
+    "email": "johndoe.infl@gmail.com",
+    "password": "Secure@123",
+    "first_name": "John",
+    "last_name": "Doe"
+}

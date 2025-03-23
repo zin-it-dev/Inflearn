@@ -1,0 +1,65 @@
+{% extends 'admin/master.html' %} {% block body %}
+<h2 class="my-4 text-center">Analytics & Statistics 📉</h2>
+
+<div class="mb-3">
+	<form class="row g-3 needs-validation">
+		<div class="col-3 mb-3">
+			<input
+				type="date"
+				class="form-control"
+				id="from_date"
+				name="from_date" />
+		</div>
+		<div class="col-3">
+			<input
+				type="date"
+				class="form-control"
+				id="to_date"
+				name="to_date" />
+		</div>
+		<div class="col-3">
+			<input
+				type="text"
+				class="form-control"
+				id="search"
+				name="keyword"
+				placeholder="Enter keyword..." />
+		</div>
+		<div class="col-3 mb-3">
+			<select
+				class="custom-select"
+				id="chartType">
+				<option value="bar">Bar Chart</option>
+				<option value="line">Line Chart</option>
+				<option value="bubble">Bubble Chart</option>
+				<option value="doughnut">Doughnut Chart</option>
+				<option value="pie">Pie Chart</option>
+				<option value="polarArea">Polar Area Chart</option>
+				<option value="radar">Radar Chart</option>
+				<option value="scatter">Scatter Chart</option>
+			</select>
+		</div>
+		<div class="col">
+			<button
+				type="submit"
+				class="btn btn-primary">
+				Filter
+			</button>
+		</div>
+	</form>
+</div>
+
+<div class="row">
+	<div class="col-6">
+		<canvas id="newUsersChart"></canvas>
+	</div>
+	<div class="col-6">
+		<canvas id="userActivityChart"></canvas>
+	</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+	type="module"
+	src="{{ url_for('static', filename='js/statistics.js') }}"></script>
+{% endblock %}
