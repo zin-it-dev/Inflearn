@@ -1,19 +1,15 @@
-import { Link } from 'react-router';
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-const Footer = () => {
+const Footer: React.FC = () => {
 	return (
-		<footer className='py-3'>
-			<p className='mb-3 mb-md-0 text-center'>
-				Copyright &copy; {new Date().getFullYear()} by{' '}
-				<Link
-					className='fw-bold text-decoration-none'
-					to={'https://github.com/zin-it-dev'}
-					target='_blank'>
-					ZIN
-				</Link>{' '}
-				Company, Inc
+		<Container
+			as='footer'
+			className='py-3 my-4 border-top'>
+			<p className='mb-3 mb-md-0 text-body-secondary text-center'>
+				&copy; {new Date().getFullYear()} ZIN Inc Website 🐻
 			</p>
-		</footer>
+		</Container>
 	);
 };
 

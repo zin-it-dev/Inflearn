@@ -1,7 +1,5 @@
-import Base from './base.type';
+import { Base } from './base.type';
 
-type Category = Base & {
+export type Category = Base & {
 	name: string;
 };
-
-export default Category;

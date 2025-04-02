@@ -1,113 +1,84 @@
-import { Link } from 'react-router';
+import React from 'react';
+import { Button, Form } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { IoPersonOutline } from 'react-icons/io5';
+import { Link, NavLink } from 'react-router';
 
-import useCategories from '@/hooks/useCategories';
-import Category from '@/types/category.type';
-import Search from './Search';
+import Categories from './Categories';
 
-const Header = () => {
-	const data = useCategories();
-	const expand: string = 'lg';
-
+const Header: React.FC = () => {
 	return (
 		<Navbar
-			className='mb-3 shadow-sm'
 			as='header'
-			key={expand}
-			expand={expand}
-			data-bs-theme='dark'
-			bg='primary'>
+			sticky='top'
+			expand={'lg'}
+			className='mb-3'>
 			<Container>
-				<Link
-					to={'/'}
-					className='navbar-brand'>
+				<Navbar.Brand
+					className={'fw-bold'}
+					as={Link}
+					to='/'>
 					Inflearn 인프런 🎓
-				</Link>
-				<Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls='offcanvasNavbar-expand-lg' />
 				<Navbar.Offcanvas
-					id={`offcanvasNavbar-expand-${expand}`}
-					aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+					id='offcanvasNavbar-expand-lg'
+					aria-labelledby='offcanvasNavbarLabel-expand-lg'
 					placement='end'>
 					<Offcanvas.Header closeButton>
 						<Offcanvas.Title
-							id={`offcanvasNavbarLabel-expand-${expand}`}>
-							Offcanvas
+							className='fw-bold'
+							id='offcanvasNavbarLabel-expand-lg'>
+							Inflearn 인프런 🎓
 						</Offcanvas.Title>
 					</Offcanvas.Header>
 					<Offcanvas.Body>
-						<Nav className='justify-content-center align-items-center flex-grow-1'>
-							<li className='nav-item'>
-								<NavDropdown
-									title='Categories'
-									className='me-0'
-									id={`offcanvasNavbarDropdown-expand-${expand}`}>
-									{data?.map(
-										(
-											category: Category,
-										) => (
-											<Link
-												key={
-													category.id
-												}
-												className='dropdown-item'
-												to={`/?category=${category.id}`}>
-												{
-													category.name
-												}
-											</Link>
-										),
-									)}
-								</NavDropdown>
-							</li>
-							<li className='nav-item'>
-								<Link
-									className='nav-link'
-									to={'/collection'}>
-									Collection
-								</Link>
-							</li>
-							<li className='nav-item'>
-								<Link
-									className='nav-link'
-									to={'/about'}>
-									About
-								</Link>
-							</li>
-							<li className='nav-item'>
-								<Link
-									className='nav-link'
-									to={'/contact'}>
-									Contact
-								</Link>
-							</li>
-							<li className='nav-item'>
-								<NavDropdown
-									title={
-										<IoPersonOutline
-											size={22}
-										/>
-									}
-									className='me-0'
-									id={`offcanvasNavbarDropdown-expand-${expand}`}>
-									<Link
-										className='dropdown-item'
-										to={'/sign-in'}>
-										Sign In
-									</Link>
-									<Link
-										className='dropdown-item'
-										to={'/sign-up'}>
-										Sign Up
-									</Link>
-								</NavDropdown>
-							</li>
+						<Nav className='justify-content-center flex-grow-1 pe-3'>
+							<Categories />
+
+							<Nav.Link
+								as={NavLink}
+								to={'/collection'}>
+								Collection
+							</Nav.Link>
+							<Nav.Link
+								as={NavLink}
+								to={'/about'}>
+								About
+							</Nav.Link>
+							<Nav.Link
+								as={NavLink}
+								to={'/contact'}>
+								Contact
+							</Nav.Link>
 						</Nav>
-						<Search />
+
+						<Nav>
+							<Nav.Link
+								as={Link}
+								to={'/auth/login'}>
+								Log In
+							</Nav.Link>
+							<Nav.Link
+								as={Link}
+								to={'/auth/register'}>
+								Register
+							</Nav.Link>
+						</Nav>
+
+						<Form className='d-flex d-lg-none d-block'>
+							<Form.Control
+								type='search'
+								placeholder='Search'
+								className='me-2'
+								aria-label='Search'
+							/>
+							<Button variant='outline-success'>
+								Search
+							</Button>
+						</Form>
 					</Offcanvas.Body>
 				</Navbar.Offcanvas>
 			</Container>

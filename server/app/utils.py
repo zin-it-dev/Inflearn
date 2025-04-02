@@ -2,7 +2,6 @@ import hashlib, cloudinary.uploader, pyotp, qrcode, base64, os, random
 
 from io import BytesIO
 from urllib.parse import urlencode
-from flask_mail import Message
 from flask import request, session
 
 
@@ -15,18 +14,6 @@ def gravatar_url(email, size=40, default="identicon", rating="g"):
 def upload_image(file_data):
     result = cloudinary.uploader.upload(file_data)
     return result.get("secure_url")
-
-
-def send_mail(subject, content, to_email):
-    msg = Message(
-        subject=subject,
-        recipients=[to_email],
-    )
-    msg.body = content
-
-    from .extensions import mail
-
-    mail.send(msg)
 
 
 def handle_verify_totp(secret_key, totp_code):

@@ -1,16 +1,19 @@
+import React from 'react';
+import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router';
-import Container from 'react-bootstrap/Container'
 
 import Header from '../ui/Header';
 import Footer from '../ui/Footer';
 
-const RootLayout = () => {
+const RootLayout: React.FC = () => {
 	return (
 		<>
 			<Header />
+
 			<Container as='main'>
 				<Outlet />
 			</Container>
+
 			<Footer />
 		</>
 	);

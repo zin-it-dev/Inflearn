@@ -21,12 +21,6 @@ class BaseConfig(Config):
     DB_USERNAME = os.getenv("DB_USERNAME") or "root"
     DB_PASSWORD = os.getenv("DB_PASSWORD") or "12345678"
     FLASK_ADMIN_SWATCH = "lux"
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_SERVER = "smtp.gmail.com"
-    MAIL_USERNAME = os.getenv("MAIL_USERNAME")
-    MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
-    MAIL_DEFAULT_SENDER = os.getenv("MAIL_USERNAME")
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):

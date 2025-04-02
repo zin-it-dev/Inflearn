@@ -1,5 +1,3 @@
-type Base = {
-	id: number | string;
+export type Base = {
+	id: number;
 };
-
-export default Base;

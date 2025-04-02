@@ -3,7 +3,7 @@ from flask_login import current_user
 from datetime import datetime, timezone
 
 from .config import settings
-from .extensions import migrate, api, login_manager, jwt, cors, mail, debug_toolbar
+from .extensions import migrate, api, login_manager, jwt, cors, debug_toolbar
 from .models import db
 from .admin import admin_manager, babel
 from .resources import category_ns, course_ns, auth_ns, user_ns, comment_ns
@@ -34,7 +34,6 @@ def create_app(config_name="development"):
     login_manager.init_app(app)
     jwt.init_app(app)
 
-    mail.init_app(app)
     cors.init_app(app)
     api.init_app(app)
     api.add_namespace(category_ns)

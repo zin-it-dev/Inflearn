@@ -1,10 +1,12 @@
+import React from 'react';
+import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router';
 
-const AuthLayout = () => {
+const AuthLayout: React.FC = () => {
 	return (
-		<main>
+		<Container as='main'>
 			<Outlet />
-		</main>
+		</Container>
 	);
 };
 

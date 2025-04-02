@@ -32,13 +32,13 @@ class UserParser(BaseParser):
         super().__init__()
         self.add_argument("username", type=str, required=True)
         self.add_argument(
-            "email", type=inputs.regex("^[a-zA-Z0-9_.+-]+@gmail\.com$"), required=True
+            "email", type=inputs.regex(r"^[a-zA-Z0-9_.+-]+@gmail\.com$"), required=True
         )
         self.add_argument("first_name", type=str, required=True)
         self.add_argument("last_name", type=str, required=True)
         self.add_argument(
             "password",
-            type=inputs.regex("^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"),
+            type=inputs.regex(r"^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"),
             required=True,
         )
         self.add_argument("avatar", required=False, type=FileStorage, location="files")
